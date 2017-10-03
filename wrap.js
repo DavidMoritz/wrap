@@ -6,7 +6,7 @@ class Wrap {
 		this.length = getNumber("length");
 		this.depth = getNumber("depth");
 		this.roll = getNumber("roll-length", true);
-		this.buffer = 1;
+		this.buffer = document.body.className === "cm-unit" ? 3 : 1;
 	}
 	get longest() {
 		return Math.max(this.height, this.length, this.depth);
