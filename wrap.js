@@ -33,10 +33,33 @@ class Wrap {
 
 function calculateTotal() {
 	const wrap = new Wrap();
+	const foot = wrap.amount > 23 ? "feet" : "foot";
+	const inch = wrap.amount % 12 === 1 ? "inch" : "inches";
+	let result = `${wrap.amount} inches`;
 
-	$("#demo").html(wrap.amount);
+	if(wrap.amount > 12) {
+		result += ` <span class="feet">(${parseInt(wrap.amount/12)} ${foot} - ${wrap.amount%12} ${inch})</span>`;
+	}
+
+	$("#demo").html(result);
+}
+
+function clickButton(e) {
+	const $target = $(e.target);
+	const $input = $target.closest(".input-group").find("input");
+	let val = Number($input.val());
+
+	if($target.hasClass("plus")) {
+		val += $target.hasClass("double") ? 5 : 1;
+	} else {
+		val -= $target.hasClass("double") ? 5 : 1;
+	}
+
+	$input.val(Math.max(0, val));
+	calculateTotal();
 }
 
 $(() => {
 	$("input").on("input change", calculateTotal);
+	$("button").on("click", clickButton);
 });

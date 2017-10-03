@@ -16,14 +16,37 @@
 	</head>
 	<body>
 		<h2>It's a Wrap!</h2>
-		<div>
+		<div class="radio-group">
 			<label class="radio"><input type="radio" name="roll-length" value="18">18 in.</label>
 			<label class="radio"><input type="radio" name="roll-length" value="24" checked>24 in.</label>
 			<label class="radio"><input type="radio" name="roll-length" value="30">30 in.</label>
 		</div>
-		<label class="input"><input type="number" name="height">Height</label>
-		<label class="input"><input type="number" name="length">Length</label>
-		<label class="input"><input type="number" name="depth">Depth</label>
+		<div class="measurements">
+			<div class="input-group">
+				<h3>Height</h3>
+				<button class="plus double">+ +</button>
+				<button class="plus">+</button>
+				<input type="number" name="height">
+				<button class="minus">-</button>
+				<button class="minus double">- -</button>
+			</div>
+			<div class="input-group">
+				<h3>Length</h3>
+				<button class="plus double">+ +</button>
+				<button class="plus">+</button>
+				<input type="number" name="length">
+				<button class="minus">-</button>
+				<button class="minus double">- -</button>
+			</div>
+			<div class="input-group">
+				<h3>Depth</h3>
+				<button class="plus double">+ +</button>
+				<button class="plus">+</button>
+				<input type="number" name="depth">
+				<button class="minus">-</button>
+				<button class="minus double">- -</button>
+			</div>
+		</div>
 		<p id="demo"></p>
 	</body>
 </html>
