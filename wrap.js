@@ -31,36 +31,6 @@ class Wrap {
 	}
 }
 
-class Build {
-	constructor() {
-		this.radioTemplate = $.clone($(".radio-group").children()[0]);
-		this.setting = "inch";
-		this.rollSizes = {
-			inch: [18, 24, 30]
-		}
-	}
-
-	start() {
-		this.clear();
-		this.rebuild();
-	}
-
-	clear() {
-		$(".radio-group").empty();
-	}
-
-	rebuild() {
-		$.each(this.rollSizes[this.setting], rollSize => {
-			const $newRadio = $(this.radioTemplate);
-
-			$newRadio.children().val(rollSize);
-			$newRadio.prepend(`${rollSize} in.`);
-
-			$(".radio-group").append($newRadio);
-		});
-	}
-}
-
 function calculateTotal() {
 	const wrap = new Wrap();
 	const foot = wrap.amount > 23 ? "feet" : "foot";
@@ -90,8 +60,6 @@ function clickButton(e) {
 }
 
 $(() => {
-	const build = new Build();
-	build.start();
 	$("input").on("input change", calculateTotal);
 	$("button").on("click", clickButton);
 });
